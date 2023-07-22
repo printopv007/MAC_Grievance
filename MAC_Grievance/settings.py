@@ -27,8 +27,6 @@ SECRET_KEY = 'django-insecure-!j!@*bq=$+2h(q4$g6rml6ckmiw7ficdz^5^2tqwyq(b^l!a5r
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
-
+LOGIN_REDIRECT_URL = '/'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -72,7 +70,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'MAC_Grievance.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
@@ -82,6 +79,7 @@ DATABASES = {
         'NAME': 'mac_grievance',
         'USER': 'root',
         'PASSWORD': '',
+       
     }
 }
 

@@ -1,4 +1,24 @@
 {% extends 'base.html' %}
 {%block body %}
-<h2>Register works</h2>
+<div class="container">
+    <h2>Register Here</h2>
+<form action="register" method="POST">
+    {%csrf_token%}
+    <input type="text" name="username" placeholder="Enter your Username!"><br><br>
+    <input type="text" name="firstname" placeholder="Enter your Firstname!"><br><br>
+    <input type="text" name="lastname" placeholder="Enter your Lastname!"><br><br>
+    <input type="email" name="email" placeholder="Enter your College Mail!"><br><br>
+    <input type="password" name="password" placeholder="Enter your password!"><br><br>
+    <input type="password" name="password1" placeholder="Re-enter your password!"><br><br>
+    <input type="text" name="department" placeholder="Enter your Department!"><br><br>
+    <input type="number" name="number" placeholder="Enter your Phone Number!"><br><br>
+    <input type="submit">
+</form>
+{% if messages %}
+ 
+    {% for message in messages %}
+      {{ message }}
+    {% endfor %}
+
+{% endif %}
 {%endblock %}
