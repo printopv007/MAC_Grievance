@@ -23,7 +23,7 @@ def login(request):
 
 def logout(request):
     auth.logout(request)
-    return redirect('/')
+    return redirect('login')
 
 def register(request):
     if request.method == "POST":
@@ -37,9 +37,13 @@ def register(request):
         phone_number = request.POST['number']
 
 
-        if password == password1 and not email.endswith('@macfast.ac.in'):
-             messages.info(request,"Only macfast.ac.in email addresses are allowed or Password does not match")
+        if not email.endswith('@macfast.ac.in'):
+             messages.info(request,"Only macfast.ac.in email addresses are allowed")
              return redirect('register')
+        elif password != password1:
+             messages.info(request,"Password mismatch")
+             return redirect('register')
+             
         elif User.objects.filter(username=username).exists():
                 messages.info(request, "Username already Exists")
                 return redirect('register')
@@ -53,5 +57,5 @@ def register(request):
                 messages.info(request, "User Successfully Created!")
                 return render(request, "login.html")
 
-        return redirect('/')
+        #return redirect('/')
     return render(request, "register.html")

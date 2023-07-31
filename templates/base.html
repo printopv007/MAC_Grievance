@@ -17,6 +17,9 @@
 
   <title>MacGrievance</title>
 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
@@ -35,6 +38,48 @@
 </head>
 
 <body>
+  <style>
+  form {
+    min-width:500px;
+    max-width:700px;
+    height: 400px;
+    padding:50px;
+    
+    margin:70px;
+    background:#ffffff59; 
+    -webkit-box-shadow: 3px 3px 23px -9px rgba(0,0,0,0.86);
+    -moz-box-shadow: 3px 3px 23px -9px rgba(0,0,0,0.86);
+    box-shadow: 3px 3px 23px -9px rgba(0,0,0,0.86);
+  }
+  
+  form input {
+    border:1px solid #eee;
+    border-radius:0 !important;
+    padding:5px 8px;
+    color:#444;
+  }
+  
+  form button {
+    color:#555;
+    background:#ffffffad;
+    border:1px solid #fff !important;
+    margin-top:20px;
+    border-radius:0px Important;
+  }
+  
+  form button:hover {
+    background:#fff !important;
+  }
+  
+  .pull-right {
+    float:right;
+  }
+  body {
+    background: #70e1f5;
+    background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);  
+    background: linear-gradient(to right, #ffd194, #70e1f5);
+  }
+  </style>
 
   <div class="hero_area">
     <!-- header section strats -->
@@ -57,11 +102,10 @@
               </li> -->
               {%if user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link"> Hello {{user.username}}</a>
+                <a class="nav-link"> Welcome {{user.username}}</a>
               </li>
-              <!-- <li>Hello {{user.username}}</li> -->
               <li class="nav-item">
-                <a class="nav-link" href="/home"> Home</a>
+                <a class="nav-link" href="/home/"> Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/credentials/logout"> Logout</a>
@@ -87,5 +131,6 @@
       </div>
     </header>
     {%block body %}
+    
 {%endblock %}
   </div></body></html>
