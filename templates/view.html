@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{%block body %}
+{% include 'sidebar.html' %}
+<!-- <div class="d-flex align-items-start">
+    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+     <button class="nav-link active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Welcome</button>
+     <button class="nav-link" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Edit Profile</button>
+      <a href="/add/">Add Complaint</a>
+     <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">View Complaint Status </button>
+      <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"> Feedback</button>
+    </div> -->
+<div class="container mt-5">
+  {%if user.is_authenticated %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Grievance Id</th>
+            <th scope="col">Grievance Subject</th>
+            <th scope="col">Grievance Type</th>
+            <th scope="col">Grievance Description</th>
+            <th scope="col">Grievance Status </th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for grieve in grievance%}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{grieve.subject}}</td>
+            <td>{{grieve.grievance_type}}</td>
+            <td>{{grieve.grievance_description}}</td>
+            <td>{{grieve.first_name}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endif %}
+</div>
+
+
+{% endblock %}

@@ -4,26 +4,36 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 User = get_user_model()
-
+from django.contrib.auth import login as auth_login
 # Create your views here.
-def login(request):
+def login1(request):
     if request.method == "POST":
         username = request.POST['username']
         password = request.POST['password']
         password1 = request.POST['password1']
-        user = auth.authenticate(username=username, password=password)
-        if user is not None and password==password1:
+        user =auth.authenticate(username=username, password=password)
+        if user is not None and password==password1 and isinstance(user, User):
             auth.login(request, user)
-            return redirect('home')
+            return _extracted_from_login_view_21(request, user, 'home')
+            # return redirect('home')
+        
         else:
             messages.info(request, "Invalid details!")
-            return redirect('login')
+            return redirect('login1')
     return render(request, "login.html")
+
+# TODO Rename this here and in `login_view`
+def _extracted_from_login_view_21(request, user, arg2):
+    auth.login(request, user)
+    request.session['username'] = request.user.username
+    request.session['id'] = request.user.id
+    return redirect(arg2)
+
 
 
 def logout(request):
     auth.logout(request)
-    return redirect('login')
+    return redirect('login1')
 
 def register(request):
     if request.method == "POST":

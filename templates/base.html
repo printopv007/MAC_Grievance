@@ -39,6 +39,8 @@
 
 <body>
   <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
   form {
     min-width:500px;
     max-width:700px;
@@ -74,11 +76,7 @@
   .pull-right {
     float:right;
   }
-  body {
-    background: #70e1f5;
-    background: -webkit-linear-gradient(to right, #ffd194, #70e1f5);  
-    background: linear-gradient(to right, #ffd194, #70e1f5);
-  }
+ 
   </style>
 
   <div class="hero_area">
@@ -86,7 +84,7 @@
     <header class="header_section">
       <div class="container-fluid">
         <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" >
+          <a class="navbar-brand" href="/home/">
             <span>MacGrievance</span>
           </a>
 
@@ -102,11 +100,11 @@
               </li> -->
               {%if user.is_authenticated %}
               <li class="nav-item">
-                <a class="nav-link"> Welcome {{user.username}}</a>
+                <a class="nav-link"> {{user.email}}</a>
               </li>
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="/home/"> Home</a>
-              </li>
+              </li> -->
               <li class="nav-item">
                 <a class="nav-link" href="/credentials/logout"> Logout</a>
               </li>
@@ -115,7 +113,7 @@
 									<li><a href="credentials/logout">Logout</a></li>								 -->
 												{% else %}
               <li class="nav-item">
-                <a class="nav-link" href="/credentials/login"> Login</a>
+                <a class="nav-link" href="/credentials/login1"> Login</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/credentials/register">Register</a>
@@ -130,7 +128,9 @@
         </nav>
       </div>
     </header>
-    {%block body %}
     
+    {%block body %}
+
 {%endblock %}
   </div></body></html>
+  
