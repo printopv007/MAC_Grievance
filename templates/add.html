@@ -10,9 +10,15 @@
    <button class="nav-link" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">View Complaint Status </button>
     <button class="nav-link" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false"> Feedback</button>
   </div> -->
+  {%if user.is_authenticated%}
 <div class="container">
     <form action="" method="post" >
       {% csrf_token %}
+      <!-- <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" class="form-control" name="username"value="{{user.name}}">
+        
+      </div> -->
        <div class="form-group">
         <label for="name">Subject</label>
         <input type="text" class="form-control" name="subject" required>
@@ -32,5 +38,5 @@
        <div class="container"><h4>{{msg}}</h4></div>
        {%endfor%}
   </div>
- 
+ {%endif%}
   {% endblock %}

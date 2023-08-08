@@ -1,0 +1,37 @@
+{% extends 'admin_nav.html' %}
+
+{%block body %}
+<!-- {% include 'sidebar.html' %} -->
+
+<div class="container mt-5">
+  {%if user.is_authenticated %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Grievance Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Grievance Subject</th>
+            <th scope="col">Grievance Type</th>
+            <th scope="col">Grievance Description</th>
+            <th scope="col">Grievance Status </th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for grieve in grievance%}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{grieve.name}}</td>
+            <td>{{grieve.subject}}</td>
+            <td>{{grieve.grievance_type}}</td>
+            <td>{{grieve.grievance_description}}</td>
+            <td>{{grieve.first_name}}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endif %}
+</div>
+
+
+{% endblock %}

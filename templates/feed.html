@@ -9,6 +9,9 @@
       <input type="text" placeholder="Enter your Feedback" name="feed_description">
       <input type="submit">
     </form>
+    {%for msg in messages%}
+    <h3>{{msg}}</h3>
+    {%endfor%}
 </div>
 
 <style>
@@ -19,11 +22,11 @@
 
 }
 .glass-container {
-  position: relative;
+  position:absolute;
   height: 350px;
   width: 300px;
   margin: 0 auto;
-  margin-top: 0px;
+  margin-left: 400px;
 }
 .glass-form {
   color: #fff;

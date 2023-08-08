@@ -55,7 +55,9 @@ ROOT_URLCONF = 'MAC_Grievance.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'templates','admin'),
+                 os.path.join(BASE_DIR, 'templates','dep_admin')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

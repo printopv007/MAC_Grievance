@@ -8,4 +8,6 @@ urlpatterns = [
     path('add/',views.add,name='add'),
     path('view/',views.view,name='view'),
     path('feed/',views.feed,name='feed'),
+    path('admin_view/',views.admin_view,name='admin_view'),
+
 ]

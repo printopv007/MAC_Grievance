@@ -1,0 +1,88 @@
+<html>
+   
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script></head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="dep_home">MAC Grievance Department Panel</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          {% if user.is_authenticated%}
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Grievances
+            </a>
+           
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/dep_view">View Grievances</a></li>
+              <li><a class="dropdown-item" href="/credentials/add_user">Add Users</a></li>
+              <li><a class="dropdown-item" href="#">Manage Users</a></li>
+              <li><a class="dropdown-item" href="#">Add Admins</a></li>
+              <li><a class="dropdown-item" href="#">Manage Admins</a></li>
+           
+
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a href="/credentials/dep_logout/" class="nav-link" aria-disabled="true">Logout</a>
+          </li>
+        </ul>
+         {%endif%}
+      </div>
+    </div>
+  </nav>
+  {% block body %}
+
+    {% endblock %} 
+
+</body></html>
+
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+form {
+min-width:500px;
+max-width:700px;
+height: 400px;
+padding:50px;
+
+margin:70px;
+background:#ffffff59; 
+-webkit-box-shadow: 3px 3px 23px -9px rgba(0,0,0,0.86);
+-moz-box-shadow: 3px 3px 23px -9px rgba(0,0,0,0.86);
+box-shadow: 3px 3px 23px -9px rgba(0,0,0,0.86);
+}
+
+form input {
+border:1px solid #eee;
+border-radius:0 !important;
+padding:5px 8px;
+color:#444;
+}
+
+form button {
+color:#555;
+background:#ffffffad;
+border:1px solid #fff !important;
+margin-top:20px;
+border-radius:0px Important;
+}
+
+form button:hover {
+background:#fff !important;
+}
+
+.pull-right {
+float:right;
+}
+
+</style>
