@@ -15,6 +15,9 @@
             <th scope="col">Email Id</th>
             <th scope="col">Department</th>
             <th scope="col">Phone Number </th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+       
 
           </tr>
         </thead>
@@ -28,6 +31,8 @@
             <td>{{user.email}}</td>
             <td>{{user.department}}</td>
             <td>{{user.phone_number}}</td>
+            <!-- <td><a class="btn btn-warning" href="delete_user(id)">Delete</a></td>
+            <td><a class="btn btn-danger" href="delete_user{id}">Delete</a></td> -->
           </tr>
           {% endfor %}
         </tbody>

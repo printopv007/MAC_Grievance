@@ -165,3 +165,10 @@ def admin_manage_user(request):
     queryset = User.objects.all()
     context={'sadd_user': queryset}
     return render(request, "admin_manage_user.html",context)
+
+# def delete_user(request, id):
+#     if request.method=='POST':
+#         user=User.objects.get(id=id)
+#         user.delete()
+#         return redirect('/')
+#     return render(request,'admin_manage_user.html')    
