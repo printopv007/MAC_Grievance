@@ -1,0 +1,35 @@
+{% extends 'admin_nav.html' %}
+
+{%block body %}
+<!-- {% include 'sidebar.html' %} -->
+
+<div class="container mt-5">
+  {%if user.is_authenticated %}
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">FeedBack No.</th>
+            <th scope="col">Username</th>
+            <th scope="col">FeedBack Grievance Subject</th>
+            <th scope="col">FeedBack Description</th>
+            
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for feed in feed%}
+          <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{feed.name}}</td>
+            <td>{{feed.feed_sub}}</td>
+            <td>{{feed.feed_description}}</td>
+            
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endif %}
+</div>
+
+
+{% endblock %}

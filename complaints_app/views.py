@@ -45,9 +45,10 @@ def view(request):
 
 def feed(request):
     if request.method == "POST":
+        username=request.session['username'] 
         feed_sub = request.POST['feed_sub']
         feed_description = request.POST['feed_description']
-        Feedback.objects.create(feed_sub=feed_sub,
+        Feedback.objects.create(name=username,feed_sub=feed_sub,
                                      feed_description=feed_description, 
                                     )  
         Feedback(feed_sub=feed_sub, feed_description=feed_description)
@@ -56,9 +57,15 @@ def feed(request):
     return render(request, 'feed.html')
 
 
-def admin_view(request):
+def admin_view(request): #All Grievance View  for Principal Admin
     queryset=MacGrievance.objects.all()
     context={'grievance':queryset}
     return render(request, 'admin_view.html',context)
+
+
+def admin_feed_view(request): #All Feedback View for Principal Admin
+    queryset=Feedback.objects.all()
+    context={'feed':queryset}
+    return render(request, 'admin_feed_view.html',context)
 
 

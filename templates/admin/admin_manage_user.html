@@ -31,8 +31,9 @@
             <td>{{user.email}}</td>
             <td>{{user.department}}</td>
             <td>{{user.phone_number}}</td>
-            <!-- <td><a class="btn btn-warning" href="delete_user(id)">Delete</a></td>
-            <td><a class="btn btn-danger" href="delete_user{id}">Delete</a></td> -->
+            <td><a class="btn btn-outline-success" href="#">Edit</a></td>
+            <td><a class="btn btn-danger" href="{%url 'credentials:admin_delete_user' user.id%}">Delete</a></td>
+            
           </tr>
           {% endfor %}
         </tbody>

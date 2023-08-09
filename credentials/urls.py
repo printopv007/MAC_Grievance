@@ -1,5 +1,6 @@
 from django.urls import path
 from . import views
+app_name='credentials'
 urlpatterns = [
     path('register/',views.register,name='register'),
     path('login1/',views.login1,name='login1'),
@@ -13,5 +14,5 @@ urlpatterns = [
     path('admin_logout/',views.admin_logout,name='admin_logout'),
     path('sadd_user/',views.sadd_user,name='sadd_user'), #add user for adding user from principal
     path('admin_manage_user/',views.admin_manage_user,name='admin_manager_user'),
-    # path('delete_user/<int:id>',views.delete_user,name='delete_user'),
-    ]
+    path('admin_delete_user/<int:id>',views.admin_delete_user,name='admin_delete_user'),
+]

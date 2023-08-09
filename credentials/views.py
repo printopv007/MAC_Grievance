@@ -4,7 +4,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
 User = get_user_model()
-from django.contrib.auth import login as auth_login
+
 # Create your views here.
 def login1(request):
     if request.method == "POST":
@@ -19,7 +19,7 @@ def login1(request):
             
         else:
             messages.info(request, "Invalid details!")
-            return redirect('login1')
+            return render(request,'login.html')
     return render(request, "login.html")
 
 # TODO Rename this here and in `login_view`
@@ -85,14 +85,14 @@ def admin_login(request):
         except:
             error="yes"
     d={'error':error}        
-    return render(request,'admin_login.html',d)
+    return render(request,"admin_login.html",d)
 
 def admin_home(request):
      return render(request,'admin_home.html')
 
 def admin_logout(request):
      auth.logout(request)
-     return redirect('admin_login')
+     return redirect('/credentials/admin_login/')
 
 def add_user(request):
     if request.method == "POST":
@@ -158,7 +158,7 @@ def sadd_user(request):
                                                 password=password,department=department,phone_number=phone_number)
                 user.save();
                 messages.info(request, "User Successfully Added!")
-                return redirect( 'sadd_user')
+                return redirect( '/credentials/sadd_user/')
     return render(request, "sadd_user.html")
 
 def admin_manage_user(request):
@@ -166,9 +166,9 @@ def admin_manage_user(request):
     context={'sadd_user': queryset}
     return render(request, "admin_manage_user.html",context)
 
-# def delete_user(request, id):
-#     if request.method=='POST':
-#         user=User.objects.get(id=id)
-#         user.delete()
-#         return redirect('/')
-#     return render(request,'admin_manage_user.html')    
+def admin_delete_user(request, id):
+    if request.method=='POST':
+        user=User.objects.get(id=id)
+        user.delete()
+        return redirect('/credentials/admin_manage_user/')
+    return render(request,"admin_delete_user.html")    

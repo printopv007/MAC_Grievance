@@ -14,6 +14,7 @@ class MacGrievance(models.Model): #add complaints table for students
 
 #feedback model  
 class Feedback(models.Model):
+    name=models.CharField(max_length=100) #username for students
     feed_sub=models.CharField(max_length=100) #feedback subject
     feed_description=models.TextField() #feedback description
 

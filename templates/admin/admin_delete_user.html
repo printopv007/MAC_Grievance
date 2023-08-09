@@ -1,0 +1,10 @@
+{% extends 'admin_nav.html'%}
+{% block body %}
+<form method="post">
+  {%csrf_token%}
+  <h5>Are you sure to delete this user?</h5><br>
+    <input class="btn btn-warning" type="submit">
+</form>
+
+
+{% endblock %}

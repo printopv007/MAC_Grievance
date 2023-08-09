@@ -112,8 +112,21 @@
               <!-- <li><a href="credentials/logout">Hom</a></li>								              
 									<li><a href="credentials/logout">Logout</a></li>								 -->
 												{% else %}
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="/credentials/login1"> Login</a>
+              </li> -->
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Login
+                </a>
+               
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item"  href="/credentials/login1/">Student</a></li>
+                  <li><a class="dropdown-item" href="/credentials/dep_login">Department</a></li>
+                  <li><a class="dropdown-item" href="/credentials/admin_login">Principal</a></li>
+    
+                </ul>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="/credentials/register">Register</a>

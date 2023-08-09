@@ -9,5 +9,7 @@ urlpatterns = [
     path('view/',views.view,name='view'),
     path('feed/',views.feed,name='feed'),
     path('admin_view/',views.admin_view,name='admin_view'),
+    path('admin_feed_view/',views.admin_feed_view,name='admin_feed_view'),
+
 
 ]
