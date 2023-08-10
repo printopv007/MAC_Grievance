@@ -6,9 +6,11 @@ User = get_user_model()
 class MacGrievance(models.Model): #add complaints table for students
     name=models.CharField(max_length=100) #username for students
     subject=models.CharField(max_length=250) #grievance subject
-    grievance_type=models.CharField(max_length=200) #grievance type
+    COURSE=(('MCA',"MCA"),('MBA',"MBA"),('MSC',"MSC")) #student COURSE
+    TYPE=(('ClassRoom',"ClassRoom"),('Teacher',"Teacher"),('Management',"Management"),('College',"College"),('Other',"Other")) #grievance type
     grievance_description=models.TextField()  #grievance description    
-    
+    grievance_type=models.CharField(choices=TYPE,null=True,max_length=200)
+    course=models.CharField(choices=COURSE,null=True,max_length=200)
     def __str__(self):
         return self.subject
 

@@ -33,7 +33,7 @@ def _extracted_from_login_view_21(request, user, arg2):
 
 def logout(request):
     auth.logout(request)
-    return redirect('login1')
+    return redirect('/credentials/login1')
 
 def register(request):
     if request.method == "POST":
@@ -92,7 +92,7 @@ def admin_home(request):
 
 def admin_logout(request):
      auth.logout(request)
-     return redirect('/credentials/admin_login/')
+     return redirect('/credentials/login1/')
 
 def add_user(request):
     if request.method == "POST":
@@ -171,4 +171,32 @@ def admin_delete_user(request, id):
         user=User.objects.get(id=id)
         user.delete()
         return redirect('/credentials/admin_manage_user/')
-    return render(request,"admin_delete_user.html")    
+    return render(request,"admin_delete_user.html") 
+
+def dep_login(request):
+    error = ""
+    if request.method == "POST":
+        u =request.POST['uname']
+        p =request.POST['pwd']
+        user =auth.authenticate(username=u, password=p)
+        try:
+            if user.is_staff:
+                auth.login(request,user)
+                error ="no"
+            else:
+                error="yes"
+        except:
+            error="yes"
+    d={'error':error}        
+    return render(request,"dep_login.html",d)
+
+
+def dep_home(request):
+     return render(request,"dep_home.html")
+     
+
+
+
+def dep_logout(request):
+      auth.logout(request)
+      return redirect('/credentials/login1/')

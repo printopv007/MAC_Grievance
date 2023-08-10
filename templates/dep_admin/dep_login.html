@@ -5,7 +5,7 @@
 {% if error == "no" %}
     <script>
         alert('logged in successfully');
-        window.location = "{% url 'dep_home' %}";
+        window.location = "{% url 'credentials:dep_home' %}";
     </script>
 {% endif %}
 {% if error == "yes" %}
