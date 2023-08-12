@@ -9,12 +9,14 @@ User = get_user_model()
 def login1(request):
     if request.method == "POST":
         username = request.POST['username']
+        department=request.POST['department']
         password = request.POST['password']
         password1 = request.POST['password1']
-        user =auth.authenticate(username=username, password=password)
+        user =auth.authenticate(username=username, password=password, department=department)
         if user is not None and password==password1 and isinstance(user, User):
             auth.login(request, user)
             request.session['username'] = user.username
+            request.session['department'] = user.department
             return _extracted_from_login_view_21(request, user, 'home')
             
         else:
@@ -27,6 +29,7 @@ def _extracted_from_login_view_21(request, user, arg2):
     auth.login(request, user)
     request.session['username'] = request.user.username
     request.session['id'] = request.user.id
+    request.session['department'] =request.user.department
     return redirect(arg2)
 
 
@@ -49,23 +52,26 @@ def register(request):
 
         if not email.endswith('@macfast.ac.in'):
              messages.info(request,"Only macfast.ac.in email addresses are allowed")
-             return redirect('register')
+             return redirect('/credentials/register')
         elif password != password1:
              messages.info(request,"Password mismatch")
-             return redirect('register')
+             return redirect('/credentials/register')
              
         elif User.objects.filter(username=username).exists():
                 messages.info(request, "Username already Exists")
-                return redirect('register')
+                return redirect('/credentials/register')
         elif User.objects.filter(email=email).exists():
                 messages.info(request, "Email already Exists")
-                return redirect('register')
+                return redirect('/credentials/register')
         else:
                 user = User.objects.create_user(username=username, first_name=fname, last_name=lname, email=email,
                                                 password=password,department=department,phone_number=phone_number)
+
                 user.save();
+                
+
                 messages.info(request, "User Successfully Created!")
-                return render(request, "login.html")
+                return redirect('/credentials/login1')
 
         #return redirect('/')
     return render(request, "register.html")
@@ -73,12 +79,13 @@ def register(request):
 def admin_login(request):
     error = ""
     if request.method == "POST":
-        u =request.POST['uname']
-        p =request.POST['pwd']
-        user =auth.authenticate(username=u, password=p)
+        username =request.POST['username']
+        password =request.POST['password']
+        user =auth.authenticate(username=username, password=password)
         try:
             if user.is_staff:
                 auth.login(request,user)
+                request.session['username'] = user.username
                 error ="no"
             else:
                 error="yes"
@@ -104,8 +111,6 @@ def add_user(request):
         password1 = request.POST['password1']
         department = request.POST['department']
         phone_number = request.POST['number']
-
-
         if not email.endswith('@macfast.ac.in'):
              messages.info(request,"Only macfast.ac.in email addresses are allowed")
              return redirect('add_user')
@@ -124,7 +129,7 @@ def add_user(request):
                                                 password=password,department=department,phone_number=phone_number)
                 user.save();
                 messages.info(request, "User Successfully Added!")
-                return redirect( 'add_user')
+                return redirect( '/credentials/add_user')
     return render(request, "add_user.html")
 
 
@@ -176,12 +181,13 @@ def admin_delete_user(request, id):
 def dep_login(request):
     error = ""
     if request.method == "POST":
-        u =request.POST['uname']
-        p =request.POST['pwd']
-        user =auth.authenticate(username=u, password=p)
+        username =request.POST['username']
+        password =request.POST['password']
+        user =auth.authenticate(username=username, password=password)
         try:
             if user.is_staff:
                 auth.login(request,user)
+                request.session['username'] = user.username
                 error ="no"
             else:
                 error="yes"
@@ -194,8 +200,45 @@ def dep_login(request):
 def dep_home(request):
      return render(request,"dep_home.html")
      
+def mca_manage(request):
+    username=request.session['username']
+    queryset = User.objects.filter(department=username)
+    context={'mca': queryset}
+    return render(request, "mca_manage.html",context)
 
+def mba_manage(request):
+    username=request.session['username']
+    queryset = User.objects.filter(department=username)
+    context={'mba': queryset}
+    return render(request, "mba_manage.html",context)
 
+def msc_manage(request):
+    username=request.session['username']
+    queryset = User.objects.filter(department=username)
+    context={'msc': queryset}
+    return render(request, "msc_manage.html",context)
+
+def mca_delete(request, id):
+
+    if request.method=='POST':
+        user=User.objects.get(id=id)
+        user.delete()
+        return redirect('/credentials/mca_manage/')
+    return render(request,"delete_user.html") 
+
+def msc_delete(request, id):
+    if request.method=='POST':
+        user=User.objects.get(id=id)
+        user.delete()
+        return redirect('/credentials/msc_manage/')
+    return render(request,"msc_delete.html") 
+
+def mba_delete(request, id):
+    if request.method=='POST':
+        user=User.objects.get(id=id)
+        user.delete()
+        return redirect('/credentials/mba_manage/')
+    return render(request,"mba_delete.html") 
 
 def dep_logout(request):
       auth.logout(request)

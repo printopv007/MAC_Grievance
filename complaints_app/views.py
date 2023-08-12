@@ -24,12 +24,14 @@ def home(request):
 def add(request):
     if request.method == "POST":
         username=request.session['username'] 
+        department=request.session['department']
         #name=request.POST['username']
         subject = request.POST['subject']
+        #course=request.POST['course']
         grievance_type = request.POST['grievance_type']
         grievance_description = request.POST['grievance_description']
         MacGrievance.objects.create(name=username,subject=subject,
-                                     grievance_type=grievance_type, 
+                                     grievance_type=grievance_type, department=department,
                                      grievance_description=grievance_description)  
         MacGrievance(subject=subject, grievance_description=grievance_description, grievance_type=grievance_type)
         messages.info(request,'Successfully Added your Complaint')
@@ -39,16 +41,19 @@ def add(request):
 
 def view(request):
     username=request.session['username']
-    queryset=MacGrievance.objects.filter(name=username)
+    department=request.session['department']
+    queryset=MacGrievance.objects.filter(name=username,department=department)
     context={'grievance':queryset}
     return render(request, 'view.html',context)
 
 def feed(request):
     if request.method == "POST":
         username=request.session['username'] 
+        department=request.session['department']
+
         feed_sub = request.POST['feed_sub']
         feed_description = request.POST['feed_description']
-        Feedback.objects.create(name=username,feed_sub=feed_sub,
+        Feedback.objects.create(name=username,department=department,feed_sub=feed_sub,
                                      feed_description=feed_description, 
                                     )  
         Feedback(feed_sub=feed_sub, feed_description=feed_description)
@@ -68,4 +73,20 @@ def admin_feed_view(request): #All Feedback View for Principal Admin
     context={'feed':queryset}
     return render(request, 'admin_feed_view.html',context)
 
+def mca_view(request): #All Grievance View  for MCA Admin
+    username=request.session['username']
+    queryset=MacGrievance.objects.filter(department=username)
+    context={'mca':queryset}
+    return render(request, "mca_view.html",context)
 
+def mba_view(request): #All Grievance View  for MBA Admin
+    username=request.session['username']
+    queryset=MacGrievance.objects.filter(department=username)
+    context={'mba':queryset}
+    return render(request, "mba_view.html",context)
+
+def msc_view(request): #All Grievance View  for MSC Admin
+    username=request.session['username']
+    queryset=MacGrievance.objects.filter(department=username)
+    context={'msc':queryset}
+    return render(request, "msc_view.html",context)

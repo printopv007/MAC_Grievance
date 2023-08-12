@@ -6,4 +6,8 @@ class CustomUser(AbstractUser):
     phone_number = models.CharField(max_length=15, blank=True, null=True)
     DEPARTMENT = (('MCA',"MCA"),('MBA',"MBA"),('MSC',"MSC"))
     department=models.CharField(choices=DEPARTMENT,null=True,max_length=200)
+    
+    def __str__(self):
+        return self.username
+
 

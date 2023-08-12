@@ -2,15 +2,29 @@
 {%block body %}
 <div class="container">
     <h2>Register Here</h2>
-<form action="register" method="POST">
+<form  method="POST">
     {%csrf_token%}
-    <input type="text" name="username" placeholder="Enter your Username!"><br><br>
-    <input type="text" name="firstname" placeholder="Enter your Firstname!"><br><br>
-    <input type="text" name="lastname" placeholder="Enter your Lastname!"><br><br>
-    <input type="email" name="email" placeholder="Enter your College Mail!"><br><br>
-    <input type="password" name="password" placeholder="Enter your password!"><br><br>
-    <input type="password" name="password1" placeholder="Re-enter your password!"><br><br>
-    <input type="text" name="department" placeholder="Enter your Department!"><br><br>
+    <input type="text" name="username" placeholder="Enter your Username!" required><br><br>
+    <input type="text" name="firstname" placeholder="Enter your Firstname!" required ><br><br>
+    <input type="text" name="lastname" placeholder="Enter your Lastname!" required><br><br>
+    <input type="email" name="email" placeholder="Enter your College Mail!" required><br><br>
+    <input type="password" name="password" placeholder="Enter your password!" required><br><br>
+    <input type="password" name="password1" placeholder="Re-enter your password!" required><br><br>
+    <!-- <input type="text" name="department" placeholder="Enter your Department!"><br><br> -->
+
+    <label class="required" for="id_department">Department :</label>
+                        
+    <select class="form-control" name="department" required="" id="id_department">
+    <option value="" selected="">---------</option>
+                                
+    <option value="MCA">MCA</option>
+                                
+    <option value="MBA">MBA</option>
+                                
+    <option value="MSC">MSC</option>
+                                
+    </select>
+    <br>
     <input type="number" name="number" placeholder="Enter your Phone Number!"><br><br>
     <input type="submit">
 </form>

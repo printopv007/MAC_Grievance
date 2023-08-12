@@ -6,14 +6,14 @@
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
-      <a class="navbar-brand" href="dep_home">MAC Grievance Department Panel</a>
+      <a class="navbar-brand" href="/credentials/dep_home">MAC Grievance Department Panel</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="/credentials/dep_home">Home</a>
           </li>
           {% if user.is_authenticated%}
           <li class="nav-item dropdown">
@@ -22,11 +22,22 @@
             </a>
            
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="/dep_view">View Grievances</a></li>
+              {% if mca %}
+              <li><a class="dropdown-item" href="/mca_view/">View Grievances</a></li>
+              <li><a class="dropdown-item" href="/credentials/mca_manage/">Manage Users</a></li>
+              <li><a class="dropdown-item" href="/mca_feed">View Feedbacks</a></li>
+              {% elif mba %}
+              <li><a class="dropdown-item" href="/mba_view/">View Grievances</a></li>
+              <li><a class="dropdown-item" href="/credentials/mba_manage">Manage Users</a></li>
+              <li><a class="dropdown-item" href="/mba_feed">View Feedbacks</a></li>
+              {% else %}
+              <li><a class="dropdown-item" href="/msc_view/">View Grievances</a></li>
+              <li><a class="dropdown-item" href="/credentials/msc_manage">Manage Users</a></li>
+              <li><a class="dropdown-item" href="/msc_feed">View Feedbacks</a></li>
+
+              {% endif %}
               <li><a class="dropdown-item" href="/credentials/add_user">Add Users</a></li>
-              <li><a class="dropdown-item" href="#">Manage Users</a></li>
-              <li><a class="dropdown-item" href="#">Add Admins</a></li>
-              <li><a class="dropdown-item" href="#">Manage Admins</a></li>
+              
            
 
             </ul>

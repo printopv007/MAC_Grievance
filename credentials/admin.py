@@ -25,4 +25,3 @@ class CustomUserAdmin(UserAdmin):
 
 # Register the custom user model with the admin site using the custom admin class
 admin.site.register(User,CustomUserAdmin)
-# admin.site.register()
