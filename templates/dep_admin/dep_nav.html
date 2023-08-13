@@ -22,21 +22,11 @@
             </a>
            
             <ul class="dropdown-menu">
-              {% if mca %}
-              <li><a class="dropdown-item" href="/mca_view/">View Grievances</a></li>
-              <li><a class="dropdown-item" href="/credentials/mca_manage/">Manage Users</a></li>
-              <li><a class="dropdown-item" href="/mca_feed">View Feedbacks</a></li>
-              {% elif mba %}
-              <li><a class="dropdown-item" href="/mba_view/">View Grievances</a></li>
-              <li><a class="dropdown-item" href="/credentials/mba_manage">Manage Users</a></li>
-              <li><a class="dropdown-item" href="/mba_feed">View Feedbacks</a></li>
-              {% else %}
-              <li><a class="dropdown-item" href="/msc_view/">View Grievances</a></li>
-              <li><a class="dropdown-item" href="/credentials/msc_manage">Manage Users</a></li>
-              <li><a class="dropdown-item" href="/msc_feed">View Feedbacks</a></li>
-
-              {% endif %}
               <li><a class="dropdown-item" href="/credentials/add_user">Add Users</a></li>
+              <li><a class="dropdown-item" href="/dep_grieve_view/">View Grievances</a></li>
+              <li><a class="dropdown-item" href="/credentials/dep_manage">Manage Users</a></li>
+              <li><a class="dropdown-item" href="/dep_feed_view">View Feedbacks</a></li>
+              
               
            
 

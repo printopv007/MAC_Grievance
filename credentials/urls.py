@@ -15,12 +15,8 @@ urlpatterns = [
     path('sadd_user/',views.sadd_user,name='sadd_user'), #add user for adding user from principal
     path('admin_manage_user/',views.admin_manage_user,name='admin_manager_user'),
     path('admin_delete_user/<int:id>',views.admin_delete_user,name='admin_delete_user'),
-    #path('mca_manage/',views.mca_manage,name='mca_manage'),
-    #path('mba_manage/',views.mba_manage,name='mba_manage'),
-    path('msc_manage/',views.msc_manage,name='msc_manage'),
-    path('mca_delete/<int:id>',views.mca_delete,name='mca_delete'),
-    path('mba_delete/<int:id>',views.mba_delete,name='mba_delete'),
-    path('msc_delete/<int:id>',views.msc_delete,name='msc_delete'),
+    path('dep_manage/',views.dep_manage,name='dep_manage'),
+    path('dep_delete/<int:id>',views.dep_delete,name='dep_delete'),
 
 
 

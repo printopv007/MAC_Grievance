@@ -4,7 +4,7 @@
 <!-- {% include 'sidebar.html' %} -->
 
 <div class="container mt-5">
-  {% if mca %}
+  
     <table class="table">
         <thead>
           <tr>
@@ -21,7 +21,7 @@
           </tr>
         </thead>
         <tbody>
-            {% for grieve in mca%}
+            {% for grieve in grieve %}
           <tr>
             <th scope="row">{{forloop.counter}}</th>
             <td>{{grieve.name}}</td>
@@ -30,13 +30,11 @@
             <td>{{grieve.grievance_type}}</td>
             <td>{{grieve.grievance_description}}</td>
             <td>{{grieve.first_name}}</td>
-            
 
           </tr>
           {% endfor %}
         </tbody>
       </table>
-{% endif %}
 </div>
 
 

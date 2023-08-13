@@ -200,45 +200,24 @@ def dep_login(request):
 def dep_home(request):
      return render(request,"dep_home.html")
      
-def mca_manage(request):
+
+def dep_manage(request):
     username=request.session['username']
     queryset = User.objects.filter(department=username)
-    context={'mca': queryset}
-    return render(request, "mca_manage.html",context)
+    context={'manage': queryset}
+    return render(request, "dep_manage.html",context)
 
-def mba_manage(request):
-    username=request.session['username']
-    queryset = User.objects.filter(department=username)
-    context={'mba': queryset}
-    return render(request, "mba_manage.html",context)
-
-def msc_manage(request):
-    username=request.session['username']
-    queryset = User.objects.filter(department=username)
-    context={'msc': queryset}
-    return render(request, "msc_manage.html",context)
-
-def mca_delete(request, id):
+def dep_delete(request, id):
 
     if request.method=='POST':
         user=User.objects.get(id=id)
         user.delete()
-        return redirect('/credentials/mca_manage/')
-    return render(request,"delete_user.html") 
+        return redirect('/credentials/dep_manage/')
+    return render(request,"dep_delete.html") 
 
-def msc_delete(request, id):
-    if request.method=='POST':
-        user=User.objects.get(id=id)
-        user.delete()
-        return redirect('/credentials/msc_manage/')
-    return render(request,"msc_delete.html") 
 
-def mba_delete(request, id):
-    if request.method=='POST':
-        user=User.objects.get(id=id)
-        user.delete()
-        return redirect('/credentials/mba_manage/')
-    return render(request,"mba_delete.html") 
+
+
 
 def dep_logout(request):
       auth.logout(request)

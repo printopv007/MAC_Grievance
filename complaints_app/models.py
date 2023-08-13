@@ -18,6 +18,6 @@ class Feedback(models.Model):
     name=models.CharField(max_length=100) #username for students
     feed_sub=models.CharField(max_length=100) #feedback subject
     feed_description=models.TextField() #feedback description
-
+    department=models.CharField(max_length=200) #department
     def __str__(self):
         return self.feed_sub
