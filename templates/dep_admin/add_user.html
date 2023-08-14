@@ -1,7 +1,8 @@
 {% extends 'dep_nav.html' %}
 {%block body %}
-<div class="container">
-    <h2>Register Here</h2>
+
+<div class="container"><br>
+    <h2>Add User Here</h2>
 <form  method="POST">
     {%csrf_token%}
     <input type="text" name="username" placeholder="Enter your Username!" required><br><br>
@@ -28,6 +29,8 @@
     <input type="number" name="number" placeholder="Enter your Phone Number!"><br><br>
     <input type="submit">
 </form>
+
+
 {% if messages %}
  
     {% for message in messages %}

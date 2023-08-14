@@ -1,5 +1,6 @@
 from django.forms import ValidationError
 from django.contrib import messages, auth
+
 from django.shortcuts import redirect, render
 from django.contrib.auth.models import User
 from django.contrib.auth import get_user_model
@@ -9,10 +10,10 @@ User = get_user_model()
 def login1(request):
     if request.method == "POST":
         username = request.POST['username']
-        department=request.POST['department']
+        #department=request.POST['department']
         password = request.POST['password']
         password1 = request.POST['password1']
-        user =auth.authenticate(username=username, password=password, department=department)
+        user =auth.authenticate(username=username, password=password)
         if user is not None and password==password1 and isinstance(user, User):
             auth.login(request, user)
             request.session['username'] = user.username
@@ -83,7 +84,7 @@ def admin_login(request):
         password =request.POST['password']
         user =auth.authenticate(username=username, password=password)
         try:
-            if user.is_staff:
+            if user.is_superuser:
                 auth.login(request,user)
                 request.session['username'] = user.username
                 error ="no"
@@ -185,7 +186,7 @@ def dep_login(request):
         password =request.POST['password']
         user =auth.authenticate(username=username, password=password)
         try:
-            if user.is_staff:
+            if user.is_staff and not user.is_superuser:
                 auth.login(request,user)
                 request.session['username'] = user.username
                 error ="no"
@@ -214,7 +215,6 @@ def dep_delete(request, id):
         user.delete()
         return redirect('/credentials/dep_manage/')
     return render(request,"dep_delete.html") 
-
 
 
 

@@ -25,6 +25,7 @@ def add(request):
     if request.method == "POST":
         username=request.session['username'] 
         department=request.session['department']
+        MacGrievance.objects.all()
         #name=request.POST['username']
         subject = request.POST['subject']
         #course=request.POST['course']
@@ -62,9 +63,29 @@ def feed(request):
 
 
 def admin_view(request): #All Grievance View  for Principal Admin
+    # if request.method == 'POST':
+    #     id=request.POST['id']
+    #     data=request.POST
+    #     status=data.get('status')
+    #     stat=MacGrievance.objects.get(id=id)
+    #     MacGrievance.objects.update(status=status)
+    #     return  redirect('admin_view')     
     queryset=MacGrievance.objects.all()
     context={'grievance':queryset}
     return render(request, 'admin_view.html',context)
+
+def admin_update(request, id):
+        queryset=MacGrievance.objects.get(id=id)
+        if request.method == 'POST':
+            status=request.POST['status']
+            queryset.status=status
+            queryset.save()
+            return redirect('admin_view')
+
+        context={'update':queryset}
+            
+        return render(request, 'admin_update.html',context)
+
 
 
 def admin_feed_view(request): #All Feedback View for Principal Admin

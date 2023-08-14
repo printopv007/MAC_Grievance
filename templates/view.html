@@ -15,11 +15,11 @@
     <table class="table">
         <thead>
           <tr>
-            <th scope="col">Grievance Id</th>
+            <th scope="col">Grievance ID</th>
             <th scope="col">Name</th>
             <th scope="col">Department</th>
-            <th scope="col">Grievance Subject</th>
             <th scope="col">Grievance Type</th>
+            <th scope="col">Grievance Subject</th>
             <th scope="col">Grievance Description</th>
             <th scope="col">Grievance Status </th>
 
@@ -28,13 +28,14 @@
         <tbody>
             {% for grieve in grievance%}
           <tr>
-            <th scope="row">{{forloop.counter}}</th>
+            <th style="text-align: center;" scope="row">{{forloop.counter}}</th>
             <td>{{grieve.name}}</td>
             <td>{{grieve.department}}</td>
-            <td>{{grieve.subject}}</td>
             <td>{{grieve.grievance_type}}</td>
+            <td>{{grieve.subject}}</td>
             <td>{{grieve.grievance_description}}</td>
-            <td>{{grieve.first_name}}</td>
+            <!-- <td>{{grieve.first_name}}</td> -->
+            <td>{{grieve.status}}</td>
           </tr>
           {% endfor %}
         </tbody>
