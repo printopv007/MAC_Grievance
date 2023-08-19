@@ -27,15 +27,25 @@
               <li><a class="dropdown-item" href="/credentials/dep_manage">Manage Users</a></li>
               <li><a class="dropdown-item" href="/dep_feed_view">View Feedbacks</a></li>
               
-              
-           
-
+             
             </ul>
           </li>
           <li class="nav-item">
             <a href="/credentials/dep_logout/" class="nav-link" aria-disabled="true">Logout</a>
           </li>
         </ul>
+        {%else%}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Login as
+          </a>
+         
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item"  href="/credentials/login1/">Student</a></li>
+            <li><a class="dropdown-item" href="/credentials/admin_login">Principal</a></li>
+
+          </ul>
+        </li>
          {%endif%}
       </div>
     </div>
@@ -50,37 +60,7 @@
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
 
-form {
-min-width:500px;
-max-width:700px;
-height: 400px;
-padding:50px;
 
-margin:70px;
-background:#ffffff59; 
--webkit-box-shadow: 3px 3px 23px -9px rgba(0,0,0,0.86);
--moz-box-shadow: 3px 3px 23px -9px rgba(0,0,0,0.86);
-box-shadow: 3px 3px 23px -9px rgba(0,0,0,0.86);
-}
-
-form input {
-border:1px solid #eee;
-border-radius:0 !important;
-padding:5px 8px;
-color:#444;
-}
-
-form button {
-color:#555;
-background:#ffffffad;
-border:1px solid #fff !important;
-margin-top:20px;
-border-radius:0px Important;
-}
-
-form button:hover {
-background:#fff !important;
-}
 
 .pull-right {
 float:right;

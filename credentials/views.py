@@ -100,7 +100,7 @@ def admin_home(request):
 
 def admin_logout(request):
      auth.logout(request)
-     return redirect('/credentials/login1/')
+     return redirect('/credentials/admin_login/')
 
 def add_user(request):
     if request.method == "POST":
@@ -221,4 +221,4 @@ def dep_delete(request, id):
 
 def dep_logout(request):
       auth.logout(request)
-      return redirect('/credentials/login1/')
+      return redirect('/credentials/dep_login')

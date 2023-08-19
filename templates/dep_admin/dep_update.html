@@ -1,11 +1,10 @@
-{% extends 'admin_nav.html'%}
+{% extends 'dep_nav.html'%}
 {% block body %}
 <form action="" method="post">
     {%csrf_token%}
     <label for="id_status"></label>
     <select class="form-control" name="status" required="" id="id_status">
-      <option value="" selected="">{{grieve.status}}</option>
-                                  
+      <option value="" selected="">--Choose Status--</option>
       <option value="Pending">Pending</option>
                                   
       <option value="InProgress">In Progress</option>

@@ -14,5 +14,7 @@ urlpatterns = [
     #path('mba_view/',views.mba_view,name='mba_view'),
     path('dep_grieve_view/',views.dep_grieve_view,name='dep_grieve_view'),
     path('dep_feed_view/',views.dep_feed_view,name='dep_feed_view'),
-    path('admin_update/<id>/',views.admin_update,name='admin_update')
+    path('admin_update/<id>/',views.admin_update,name='admin_update'),
+    path('dep_update/<id>/',views.dep_update,name='dep_update')
+    
 ]

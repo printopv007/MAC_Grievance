@@ -3,6 +3,7 @@
 {%block body %}
 
 <div class="container mt-5">
+  {%if user.is_authenticated %}
     <table class="table">
         <thead>
           <tr>
@@ -12,7 +13,8 @@
             <th scope="col">Grievance Type</th>
             <th scope="col">Grievance Subject</th>
             <th scope="col">Grievance Description</th>
-            <th scope="col">Grievance Status </th>
+            <th scope="col">Edit Status</th>
+           
 
           </tr>
         </thead>
@@ -25,12 +27,15 @@
             <td>{{grieve.grievance_type}}</td>
             <td>{{grieve.subject}}</td>
             <td>{{grieve.grievance_description}}</td>
-            <td>{{grieve.first_name}}</td>
-            <!-- <td>{{grieve.status}}</td> -->
+            <td>{{grieve.status}}</td>
+              <td><a class="btn btn-danger" href="/dep_update/{{grieve.id}}/">Update</a></td>
+              <!-- <input type='hidden' name="id" value={{grieve.id}}> -->
+            <br>
           </tr>
           {% endfor %}
         </tbody>
       </table>
+{% endif %}
 </div>
 
 

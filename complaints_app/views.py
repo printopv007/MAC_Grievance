@@ -117,3 +117,16 @@ def dep_feed_view(request):
     queryset=Feedback.objects.filter(department=username)
     context={'feed':queryset}
     return render(request, 'dep_feed_view.html',context)
+
+
+def dep_update(request, id):
+        queryset=MacGrievance.objects.get(id=id)
+        if request.method == 'POST':
+            status=request.POST['status']
+            queryset.status=status
+            queryset.save()
+            return redirect('dep_grieve_view')
+
+        context={'update':queryset}
+            
+        return render(request, 'dep_update.html',context)

@@ -1,6 +1,33 @@
-{% extends 'base.html' %}
+
+{% extends 'base.html' %}{%load static%}
 {%block body %}
-{%if user.is_authenticated %}
-<h1>Welcome {{user.username}}</h1>
-{% endif %}
+<div class="container"><br><br> 
+<h2><marquee behavior="" direction="">Welcome to Mac Grievance</marquee></h2><br>
+<h1 style="text-align: center;">Register or Login to Add Grievance</h1>
+<a href="/credentials/login1/"><img src="{% static 'images/user.png' %}" alt="">User Login</a>
+<a href="/credentials/admin_login"><img src="{% static 'images/prin.png' %}" alt="">Principal Login</a>
+<a href="/credentials/dep_login"><img src="{% static 'images/dep.png' %}" alt="">Department Login</a>
+
+</div>
+<style>
+    h1{
+    
+        margin-left: 300px;
+        color: rgb(122, 0, 0);
+        background-color: #ffffff;
+        width: 50%;
+        height: 50%;
+    }
+    img{
+        
+        margin-left:50px;
+        width: 150px;
+        height: 150px;
+    }
+    a{
+        color: #ffffff;
+    
+    }
+   
+</style>
 {%endblock %}
