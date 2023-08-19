@@ -1,11 +1,11 @@
 {% extends 'admin_nav.html'%}
 {% block body %}
+<div class="container">
 <form action="" method="post">
     {%csrf_token%}
     <label for="id_status"></label>
     <select class="form-control" name="status" required="" id="id_status">
-      <option value="" selected="">{{grieve.status}}</option>
-                                  
+      <option value="" selected="">--Choose Status--</option>
       <option value="Pending">Pending</option>
                                   
       <option value="InProgress">In Progress</option>
@@ -14,8 +14,9 @@
 
       <option value="UnSolved">UnSolved</option>
                                   
-      </select>
-      <td><button type="submit" class="btn btn-danger">Update</button></td>
+      </select><br>
+      <td><button style="margin-left: 600px;" type="submit" class="btn btn-danger">Update</button></td>
       <!-- <input type='hidden' name="id" value={{grieve.id}}> -->
     </form>
+  </div>
 {% endblock %}

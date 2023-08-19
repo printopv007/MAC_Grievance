@@ -216,6 +216,11 @@ def dep_delete(request, id):
         return redirect('/credentials/dep_manage/')
     return render(request,"dep_delete.html") 
 
+def profile(request):
+     username=request.session['username']
+     queryset=User.objects.filter(username=username)
+     context={'profile':queryset}
+     return render(request,"profile.html",context)
 
 
 

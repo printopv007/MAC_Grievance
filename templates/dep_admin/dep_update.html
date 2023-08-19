@@ -1,5 +1,6 @@
 {% extends 'dep_nav.html'%}
 {% block body %}
+<div class="container">
 <form action="" method="post">
     {%csrf_token%}
     <label for="id_status"></label>
@@ -13,8 +14,9 @@
 
       <option value="UnSolved">UnSolved</option>
                                   
-      </select>
-      <td><button type="submit" class="btn btn-danger">Update</button></td>
+      </select><br>
+      <td><button style="margin-left: 600px;" type="submit" class="btn btn-danger">Update</button></td>
       <!-- <input type='hidden' name="id" value={{grieve.id}}> -->
     </form>
+  </div>
 {% endblock %}
