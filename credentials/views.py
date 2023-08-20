@@ -14,14 +14,15 @@ def login1(request):
         password = request.POST['password']
         password1 = request.POST['password1']
         user =auth.authenticate(username=username, password=password)
-        if user is not None and password==password1 and isinstance(user, User):
+        if user is not None and password==password1 and isinstance(user, User) and not user.is_superuser and not user.is_staff: 
+        
             auth.login(request, user)
             request.session['username'] = user.username
             request.session['department'] = user.department
             return _extracted_from_login_view_21(request, user, 'home')
             
         else:
-            messages.info(request, "Invalid details!")
+            messages.info(request, "Enter Correct details!")
             return render(request,'login.html')
     return render(request, "login.html")
 

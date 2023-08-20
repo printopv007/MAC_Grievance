@@ -5,8 +5,8 @@
     <form class="glass-form" method="post">
         {% csrf_token %}
       <h1>Enter your Feedback</h1>
-      <input type="text" placeholder="Enter Grievance Subject" name="feed_sub">
-      <input type="text" placeholder="Enter your Feedback" name="feed_description">
+      <input type="text" placeholder="Enter Grievance Subject" name="feed_sub" required>
+      <input type="text" placeholder="Enter your Feedback" name="feed_description" required>
       <input type="submit">
     </form>
     {%for msg in messages%}

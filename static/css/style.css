@@ -4,6 +4,8 @@
 body {
   font-family: 'Poppins',sans-serif;
   color: #ffffff;
+  /* background-image: url(/static/images/clg.jpeg); */
+
   background-color: #f8f8f8;
   overflow-x: hidden;
 }
@@ -108,7 +110,10 @@ a:focus {
 /*header section*/
 .hero_area {
   position: relative;
-  background-color: #901529;
+  background-image: url(/static/images/clg.jpeg);
+  
+  /* background-repeat: no-repeat; */
+  background-color: #ffffff;
   min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;

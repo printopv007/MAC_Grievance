@@ -2,12 +2,15 @@
 {% extends 'base.html' %}{%load static%}
 {%block body %}
 <div class="container"><br><br> 
+    {% if user.is_authenticated %}
+    <h1>Hello {{user.username}}</h1>
+    {%else %}
 <h2><marquee behavior="" direction="">Welcome to Mac Grievance</marquee></h2><br>
 <h1 style="text-align: center;">Register or Login to Add Grievance</h1>
-<a href="/credentials/login1/"><img src="{% static 'images/user.png' %}" alt="">User Login</a>
+<a href="/credentials/login1/"><img src="{% static 'images/user.png' %}" alt=""><h4>Student Login</h4></a>
 <a href="/credentials/admin_login"><img src="{% static 'images/prin.png' %}" alt="">Principal Login</a>
 <a href="/credentials/dep_login"><img src="{% static 'images/dep.png' %}" alt="">Department Login</a>
-
+{%endif%}
 </div>
 <style>
     h1{
@@ -20,9 +23,9 @@
     }
     img{
         
-        margin-left:50px;
-        width: 150px;
-        height: 150px;
+        margin-left:30px;
+        width: 200px;
+        height: 200px;
     }
     a{
         color: #ffffff;
